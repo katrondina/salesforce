@@ -36,3 +36,15 @@ System.assertEquals('Prefers to be contacted by email.',
 //another activity
 Contact[] contactsDel = [SELECT Id FROM Contact WHERE LastName='Smith'];
 delete contactsDel;
+//
+//
+//another activity - debug catch
+try{
+    //This causes an exception because
+    //the required Name field is not provided.
+    Account acct = new Account();
+    //Insert the account
+    insert acct;
+} catch (DmlException e){
+    System.debug('A DML exception has occured: ' + e.getMessage());
+}
